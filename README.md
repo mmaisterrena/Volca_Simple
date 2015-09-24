@@ -29,3 +29,9 @@ Use any midi keyboard to trigger samples in the Korg Volca Sample using an ardui
 * Install Arduino MIDI library http://playground.arduino.cc/Main/MIDILibrary
 * Upload the Volca_Simple file to your Arduino
 * Have Fun
+
+#Usage
+Connect any midi keyboard to the midi in on your arduino then connect the midi out of the arduino to the volca sample.
+To trigger samples on the volca Sample play any note from C4 (midi note 60) to A4 (midi note 69). Each note will triger a different sample.
+
+
