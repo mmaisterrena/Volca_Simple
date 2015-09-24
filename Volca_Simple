@@ -46,16 +46,16 @@ MIDI_CREATE_DEFAULT_INSTANCE();
 
 
 //This represent the notes (Keys) that will be triggering each sample, you can chenge this to whatever note you want to use to trigger each sample.
-int sNote1=36;
-int sNote2=37;
-int sNote3=38;
-int sNote4=39;
-int sNote5=48;
-int sNote6=47;
-int sNote7=42;
-int sNote8=43;
-int sNote9=44;
-int sNote10=45;
+int sNote1=60;
+int sNote2=61;
+int sNote3=62;
+int sNote4=63;
+int sNote5=64;
+int sNote6=65;
+int sNote7=66;
+int sNote8=67;
+int sNote9=68;
+int sNote10=69;
 
 
 // This function will be automatically called when a NoteOn is received.
