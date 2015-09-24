@@ -4,22 +4,23 @@ Use any midi keyboard to trigger samples in the Korg Volca Sample using an ardui
 # Requirements:
 
 -Hardware:
-*Korg Volca Sample
-*Arduino Uno or Mega
-*Midi In 
-  *Female MIDI jack Digikey CP-2350-ND
-  *220Ohm 1/4watt resistor Digikey CF14JT220RCT-ND
-  *1N4148 diode Digikey1N4148-TAPCT-ND
-  *10kOhm 1/4watt resistor Digikey CF14JT10K0CT-ND
-  *470 Ohm 1/4watt resistor Digikey CF14JT470RCT-ND (I used 2x220 instead)
-  *6N138 optocoupler Digikey 751-1263-5-ND
-*Midi Out
-  *Female MIDI jack
-  *220 ohm resistor
-  *Wires 
-  
--Software
- *Arduino MIDI library http://playground.arduino.cc/Main/MIDILibrary
+*Korg Volca Sample <br>
+*Arduino Uno or Mega <br>
+*Midi In:  <br>
+  -Female MIDI jack Digikey CP-2350-ND <br>
+  -220Ohm 1/4watt resistor Digikey CF14JT220RCT-ND <br>
+  -1N4148 diode Digikey1N4148-TAPCT-ND <br>
+  -10kOhm 1/4watt resistor Digikey CF14JT10K0CT-ND <br>
+  -470 Ohm 1/4watt resistor Digikey CF14JT470RCT-ND (I used 2x220 instead) <br>
+  -6N138 optocoupler Digikey 751-1263-5-ND <br>
+ <br>
+*Midi Out: <br>
+  -Female MIDI jack <br>
+  -220 ohm resistor <br>
+  -Wires  <br>
+   <br>
+-Software: <br>
+ *Arduino MIDI library http://playground.arduino.cc/Main/MIDILibrary <br>
 
 
 #Setup
