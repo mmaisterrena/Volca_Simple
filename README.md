@@ -1,6 +1,8 @@
 # Volca Simple
 Use any midi keyboard to trigger samples in the Korg Volca Sample using an arduino as a midi channel re-router.
 
+Developed by Mauricio Maisterrena.
+
 # Requirements:
 
 <strong>Hardware:</strong><br>
@@ -23,15 +25,19 @@ Use any midi keyboard to trigger samples in the Korg Volca Sample using an ardui
  *Arduino MIDI library http://playground.arduino.cc/Main/MIDILibrary <br>
 
 
-#Setup
+# Setup
 * To recieve Midi messages with Arduino follow the next tutorial: http://www.instructables.com/id/Send-and-Receive-MIDI-with-Arduino/step10/Receive-MIDI-Messages-with-Arduino/
 * To send Midi messages with Arduino follow the next tutorial: http://www.instructables.com/id/Send-and-Receive-MIDI-with-Arduino/#step1
 * Install Arduino MIDI library http://playground.arduino.cc/Main/MIDILibrary
 * Upload the Volca_Simple file to your Arduino
 * Have Fun
 
-#Usage
+# Usage
 Connect any midi keyboard to the midi in on your arduino then connect the midi out of the arduino to the volca sample.
 To trigger samples on the volca Sample play any note from C4 (midi note 60) to A4 (midi note 69). Each note will trigger a different sample.
 
+# Donate
 
+Help yourself by helping us support you! Many hours have been spent developing this code. Since you find it useful, please consider donating via the button below.
+
+<a href=https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=C5GDLRY5Z4AXJ><img src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif" alt="PayPal - The safer, easier way to pay online!" /></a>
