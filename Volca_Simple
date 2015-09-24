@@ -1,0 +1,181 @@
+/*
+ *******************************************************************************
+ * Volca Simple
+ * Channel Corrector for Korg Volca Sample
+ * Copyright 2015 Mauricio Maisterrena
+ *
+ * Requires:
+ * Arduino MIDI library
+ * http://playground.arduino.cc/Main/MIDILibrary
+ *
+ *
+ * Note:
+ *  If you want use with Leonardo, you must choose Arduino MIDI library v4.0 or higher.
+ *******************************************************************************
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; either version 2 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>
+ *******************************************************************************
+ */
+
+
+//////////////////////////
+// MIDI Pin assign
+// 2 : GND
+// 4 : +5V(Vcc) with 220ohm
+// 5 : TX
+//////////////////////////
+
+#include <MIDI.h>
+
+//If you'r using a Mac and are getting a compilation error delete the next line of code
+MIDI_CREATE_DEFAULT_INSTANCE();
+
+// -----------------------------------------------------------------------------
+
+
+
+
+//This represent the notes (Keys) that will be triggering each sample, you can chenge this to whatever note you want to use to trigger each sample.
+int sNote1=36;
+int sNote2=37;
+int sNote3=38;
+int sNote4=39;
+int sNote5=48;
+int sNote6=47;
+int sNote7=42;
+int sNote8=43;
+int sNote9=44;
+int sNote10=45;
+
+
+// This function will be automatically called when a NoteOn is received.
+void handleNoteOn(byte channel, byte pitch, byte velocity)
+{
+     
+    // This will change the MIDI channel depending on what note (key) is played based on the list above.
+ 
+    
+    digitalWrite(13,HIGH);
+    
+    if (MIDI.getData1()==sNote1)
+    {
+    MIDI.send(MIDI.getType(),
+              MIDI.getData1(),
+              MIDI.getData2(),
+              1);
+    };
+        if (MIDI.getData1()==sNote2)
+    {
+    MIDI.send(MIDI.getType(),
+              MIDI.getData1(),
+              MIDI.getData2(),
+              2);
+    };
+        if (MIDI.getData1()==sNote3)
+    {
+    MIDI.send(MIDI.getType(),
+              MIDI.getData1(),
+              MIDI.getData2(),
+              3);
+    };
+        if (MIDI.getData1()==sNote4)
+    {
+    MIDI.send(MIDI.getType(),
+              MIDI.getData1(),
+              MIDI.getData2(),
+              4);
+    };
+            if (MIDI.getData1()==sNote5)
+    {
+    MIDI.send(MIDI.getType(),
+              MIDI.getData1(),
+              MIDI.getData2(),
+              5);
+    };
+               if (MIDI.getData1()==sNote6)
+    {
+    MIDI.send(MIDI.getType(),
+              MIDI.getData1(),
+              MIDI.getData2(),
+              6);
+    };
+               if (MIDI.getData1()==sNote7)
+    {
+    MIDI.send(MIDI.getType(),
+              MIDI.getData1(),
+              MIDI.getData2(),
+              7);
+    };
+               if (MIDI.getData1()==sNote8)
+    {
+    MIDI.send(MIDI.getType(),
+              MIDI.getData1(),
+              MIDI.getData2(),
+              8);
+    };
+               if (MIDI.getData1()==sNote9)
+    {
+    MIDI.send(MIDI.getType(),
+              MIDI.getData1(),
+              MIDI.getData2(),
+              9);
+    };
+               if (MIDI.getData1()==sNote10)
+    {
+    MIDI.send(MIDI.getType(),
+              MIDI.getData1(),
+              MIDI.getData2(),
+              10);
+    };
+     
+     
+    
+}
+
+void handleNoteOff(byte channel, byte pitch, byte velocity)
+{
+    // Do something when the note is released.
+    // Note that NoteOn messages with 0 velocity are interpreted as NoteOffs.
+    digitalWrite(13,LOW);
+    
+     MIDI.send(MIDI.getType(),
+              MIDI.getData1(),
+              MIDI.getData2(),
+              2);
+    
+}
+
+// -----------------------------------------------------------------------------
+    
+void setup()
+{
+    // Connect the handleNoteOn function to the library,
+    // so it is called upon reception of a NoteOn.
+    MIDI.setHandleNoteOn(handleNoteOn);  // Put only the name of the function
+
+    // Do the same for NoteOffs
+    MIDI.setHandleNoteOff(handleNoteOff);
+
+    // Initiate MIDI communications, listen to all channels
+    MIDI.begin(16);
+   
+
+}
+
+void loop()
+{
+    // Call MIDI.read the fastest you can for real-time performance.
+    MIDI.read();
+    
+
+}
