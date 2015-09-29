@@ -29,7 +29,7 @@ Developed by Mauricio Maisterrena.
 * To recieve Midi messages with Arduino follow the next tutorial: http://www.instructables.com/id/Send-and-Receive-MIDI-with-Arduino/step10/Receive-MIDI-Messages-with-Arduino/
 * To send Midi messages with Arduino follow the next tutorial: http://www.instructables.com/id/Send-and-Receive-MIDI-with-Arduino/#step1
 * Install Arduino MIDI library http://playground.arduino.cc/Main/MIDILibrary
-* Upload the Volca_Simple file to your Arduino
+* Upload the Volca_Simple file to your Arduino. TIP: Make sure that Tx and Rx pins on the arduino are disconnected when uploading.
 * Have Fun
 
 # Usage
