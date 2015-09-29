@@ -35,7 +35,7 @@ Developed by Mauricio Maisterrena.
 
 # Usage
 Connect any midi keyboard to the midi in on your arduino then connect the midi out of the arduino to the volca sample.
-To trigger samples on the volca Sample play any note from C4 (midi note 60) to A4 (midi note 69). Each note will trigger a different sample.
+To trigger samples on the Volca Sample set your midi keyboard (or device) to midi channel 16 and play any note from C4 (midi note 60) to A4 (midi note 69). Each note will trigger a different sample.
 
 # Donate
 
