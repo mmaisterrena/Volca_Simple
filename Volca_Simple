@@ -169,6 +169,8 @@ void handleNoteOff(byte channel, byte pitch, byte velocity)
     
 void setup()
 {
+    MIDI.turnThruOff();
+    
     // Connect the handleNoteOn function to the library,
     // so it is called upon reception of a NoteOn.
     MIDI.setHandleNoteOn(handleNoteOn);  // Put only the name of the function
