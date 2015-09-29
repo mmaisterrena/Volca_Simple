@@ -43,7 +43,8 @@ MIDI_CREATE_DEFAULT_INSTANCE();
 // -----------------------------------------------------------------------------
 
 
-
+//Default Channel to send MIDI to Volca (Midi msg will be redirected to the corresponding channel on the Volca Sample)
+int vVolcaChan=16;
 
 //This represent the notes (Keys) that will be triggering each sample, you can change this to whatever note you want to use to trigger each sample.
 int sNote1=60;
@@ -64,9 +65,11 @@ void handleNoteOn(byte channel, byte pitch, byte velocity)
      
     // This will change the MIDI channel depending on what note (key) is played based on the list above.
  
-    
+
     digitalWrite(13,HIGH);
     
+ if (MIDI.getChannel()==vVolcaChan)    
+ {  
     if (MIDI.getData1()==sNote1)
     {
     MIDI.send(MIDI.getType(),
@@ -138,7 +141,7 @@ void handleNoteOn(byte channel, byte pitch, byte velocity)
               10);
     };
      
-     
+ }  
     
 }
 
@@ -151,7 +154,7 @@ void handleNoteOff(byte channel, byte pitch, byte velocity)
      MIDI.send(MIDI.getType(),
               MIDI.getData1(),
               MIDI.getData2(),
-              MIDI.getData3());
+              MIDI.getChannel());
     
 }
 
