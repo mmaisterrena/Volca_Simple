@@ -171,6 +171,7 @@ void handleNoteOff(byte channel, byte pitch, byte velocity)
     
 void setup()
 {
+     pinMode(13, OUTPUT);
     MIDI.turnThruOff();
     
     // Connect the handleNoteOn function to the library,
