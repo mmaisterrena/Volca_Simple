@@ -1,5 +1,6 @@
 # Volca Simple
 Use any midi keyboard to trigger samples in the Korg Volca Sample using an arduino as a midi channel re-router.
+Watch a video demo here: https://www.youtube.com/watch?v=zcMHnB5qIcQ
 
 Developed by Mauricio Maisterrena.
 
