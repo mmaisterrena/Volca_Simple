@@ -179,7 +179,7 @@ void setup()
     MIDI.setHandleNoteOff(handleNoteOff);
 
     // Initiate MIDI communications, listen to all channels
-    MIDI.begin(16);
+    MIDI.begin(MIDI_CHANNEL_OMNI);
    
 
 }
