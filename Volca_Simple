@@ -45,7 +45,7 @@ MIDI_CREATE_DEFAULT_INSTANCE();
 
 
 
-//This represent the notes (Keys) that will be triggering each sample, you can chenge this to whatever note you want to use to trigger each sample.
+//This represent the notes (Keys) that will be triggering each sample, you can change this to whatever note you want to use to trigger each sample.
 int sNote1=60;
 int sNote2=61;
 int sNote3=62;
