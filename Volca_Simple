@@ -142,6 +142,13 @@ void handleNoteOn(byte channel, byte pitch, byte velocity)
     };
      
  }  
+ else {
+  MIDI.send(MIDI.getType(),
+             MIDI.getData1(),
+             MIDI.getData2(),
+             MIDI.getChannel());    
+ }
+
     
 }
 
