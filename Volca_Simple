@@ -37,8 +37,10 @@
 
 #include <MIDI.h>
 
-//If you'r using a Mac and are getting a compilation error delete the next line of code
+//If you'r using a Mac and are getting a compilation error delete the next 3 lines of code
+#ifdef MIDI_CREATE_DEFAULT_INSTANCE
 MIDI_CREATE_DEFAULT_INSTANCE();
+#endif
 
 // -----------------------------------------------------------------------------
 
