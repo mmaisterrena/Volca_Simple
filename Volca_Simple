@@ -151,7 +151,7 @@ void handleNoteOff(byte channel, byte pitch, byte velocity)
      MIDI.send(MIDI.getType(),
               MIDI.getData1(),
               MIDI.getData2(),
-              2);
+              MIDI.getData3());
     
 }
 
