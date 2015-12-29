@@ -41,7 +41,7 @@ Connect any midi keyboard to the midi in on your arduino then connect the midi o
 
 3. 4 Voice Polyphonic Synth: Set the last 4 samples in your Volca Sample (samples 7 to 10) to the same pitched sample, set your midi keyboard to midi channel 16 and play notes from midi note 36 (C2) to midi note 84 (C6).
 
-*Recomended: For better results when playing pitched notes always use samples tuned to note C4 (midi note 60) as the "seed" sample.
+*Recomended: For better results when playing pitched notes always use samples tuned to midi note 60 (C4) as the "seed" sample.
 
 
 # Donate
