@@ -1,6 +1,5 @@
 # Volca Simple
-Use any midi keyboard to trigger samples in the Korg Volca Sample using an arduino as a midi channel re-router.<br>
-Watch a demo video here: https://www.youtube.com/watch?v=zcMHnB5qIcQ
+Makes it posible to play pitched notes on the Volca Sample using any midi keyboard and also trigger any sample using just one midi channel.
 
 Developed by Mauricio Maisterrena.
 
@@ -35,7 +34,15 @@ Developed by Mauricio Maisterrena.
 
 # Usage
 Connect any midi keyboard to the midi in on your arduino then connect the midi out of the arduino to the volca sample.
-To trigger samples on the Volca Sample set your midi keyboard (or device) to midi channel 16 and play any note from C4 (midi note 60) to A4 (midi note 69). Each note will trigger a different sample.
+
+1. Trigger samples using just 1 midi channel: Set your midi keyboard (or device) to midi channel 16 and play any note from midi note 0 (the lowest possible note) to midi note 9. Each note will trigger a different sample.
+
+2. Trigger pithched notes using a keyboard (monophonic): Set your midi keyboard to any midi channel between 1 and 10 (each channel will trigger a different sample) and play notes from midi note 36 (C2) to midi note 84 (C6).
+
+3. 4 Voice Polyphonic Synth: Set the last 4 samples in your Volca Sample (samples 7 to 10) to the same pitched sample, set your midi keyboard to midi channel 16 and play notes from midi note 36 (C2) to midi note 84 (C6).
+
+*Recomended: For better results when playing pitched notes always use samples tuned to note C4 (midi note 60) as the "seed" sample.
+
 
 # Donate
 
