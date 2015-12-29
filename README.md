@@ -1,7 +1,7 @@
 # Volca Simple
-Makes it posible to play pitched notes on the Volca Sample using any midi keyboard and also trigger any sample using just one midi channel.
+Makes it posible to play pitched notes on the Volca Sample using a midi keyboard by sending different speed values when playing notes. also enables you to trigger any sample using just one midi channel.
 
-Developed by Mauricio Maisterrena.
+Developed by Mauricio Maisterrena (December 2015, Torreon Coah. Mexico).
 
 # Requirements:
 
