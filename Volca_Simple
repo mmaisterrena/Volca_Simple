@@ -1,7 +1,8 @@
 /* vim: set filetype=c++:
+ /* vim: set filetype=c++:
  *******************************************************************************
- * Volca Simple
- * Channel Corrector for Korg Volca Sample
+ * Volca Sample Synth
+ * Note to pitch enabled for Korg Volca Sample
  * Copyright 2015 Mauricio Maisterrena
  *
  * Requires:
@@ -45,152 +46,115 @@ MIDI_CREATE_DEFAULT_INSTANCE();
 // -----------------------------------------------------------------------------
 
 
+
+//Note: Midi CC value 64 = Speed value 0
+const int vSpeedValue[] = { //Pitches (speed) for each note
+0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  19,  20,  21,  22,  23,  24,  25,  
+26, 27, 28, 29, 30, 32, 34, 37, 40, 43, 45, 48, 51, 53, 56, 59, 61, 64, 67, 69, 72, 75, 78, 80, 83, 85, 88, 91, 93, 96, 97, 99, 100, 102, 103, 104, 106, 107, 108, 109, 111, 112
+};
+
+
+
+
+int vVolcaMode = 1;
+
 //Default Channel to send MIDI to Volca (Midi msg will be redirected to the corresponding channel on the Volca Sample)
-int vVolcaChan=16;
+int vPolyChan=16;
 
-//This represent the notes (Keys) that will be triggering each sample, you can change this to whatever note you want to use to trigger each sample.
-int sNote1=60;
-int sNote2=61;
-int sNote3=62;
-int sNote4=63;
-int sNote5=64;
-int sNote6=65;
-int sNote7=66;
-int sNote8=67;
-int sNote9=68;
-int sNote10=69;
+int vFirstVoice = 7;
+int vVoiceChan = vFirstVoice;
 
+int vNote;
+
+// Range of notes that the Volca Sample can generate
+int vPitchFirstNote = 36; 
+int vPitchLastNote = 84;
+
+
+// Synth code, will assign the speed(pitch) depending on the note that was played
+void fVoiceSend(int vVoiceChan, int vSpeed) 
+  {
+    //MIDI.send(midi::NoteOff,60,0,vVoiceChan); //Thw Midi "Note Off" msg is not recognized by the volca Sample
+    MIDI.sendControlChange(43,vSpeed,vVoiceChan);
+    MIDI.send(MIDI.getType(),60,MIDI.getData2(),vVoiceChan);
+  }
+// -----------------------------------------------------------------------------
+
+
+//This code will make it possibble to play each sample using a single midi channel (channel 16 by default) on mini notes 0 to 9 (the lowest notes)
+void fChannelRedir(int vChan) 
+{
+      MIDI.send(MIDI.getType(),
+      MIDI.getData1(),
+      MIDI.getData2(),
+      vChan); 
+}
+
+
+// -----------------------------------------------------------------------------
 
 // This function will be automatically called when a NoteOn is received.
 void handleNoteOn(byte channel, byte pitch, byte velocity)
 {
-     
-    // This will change the MIDI channel depending on what note (key) is played based on the list above.
- 
 
-    digitalWrite(13,HIGH);
+    digitalWrite(13,HIGH); //Turns on led on pin 13 when note on is recived on channnel 16
+     
     
- if (MIDI.getChannel()==vVolcaChan)    
- {  
-    if (MIDI.getData1()==sNote1)
+    if (MIDI.getChannel() != vPolyChan)
     {
-    MIDI.send(MIDI.getType(),
-              MIDI.getData1(),
-              MIDI.getData2(),
-              1);
+      vVoiceChan =  MIDI.getChannel();
+    }
+    
+    vNote = MIDI.getData1();
+    
+    if( vNote < 10 & MIDI.getChannel() == vPolyChan)
+    {
+       fChannelRedir(vNote+1);
     };
-        if (MIDI.getData1()==sNote2)
+   
+  
+   //Polyphonic 4 voices Synth
+    if (vNote>= vPitchFirstNote & vNote <=vPitchLastNote) //Just notes on pitched range
     {
-    MIDI.send(MIDI.getType(),
-              MIDI.getData1(),
-              MIDI.getData2(),
-              2);
-    };
-        if (MIDI.getData1()==sNote3)
-    {
-    MIDI.send(MIDI.getType(),
-              MIDI.getData1(),
-              MIDI.getData2(),
-              3);
-    };
-        if (MIDI.getData1()==sNote4)
-    {
-    MIDI.send(MIDI.getType(),
-              MIDI.getData1(),
-              MIDI.getData2(),
-              4);
-    };
-            if (MIDI.getData1()==sNote5)
-    {
-    MIDI.send(MIDI.getType(),
-              MIDI.getData1(),
-              MIDI.getData2(),
-              5);
-    };
-               if (MIDI.getData1()==sNote6)
-    {
-    MIDI.send(MIDI.getType(),
-              MIDI.getData1(),
-              MIDI.getData2(),
-              6);
-    };
-               if (MIDI.getData1()==sNote7)
-    {
-    MIDI.send(MIDI.getType(),
-              MIDI.getData1(),
-              MIDI.getData2(),
-              7);
-    };
-               if (MIDI.getData1()==sNote8)
-    {
-    MIDI.send(MIDI.getType(),
-              MIDI.getData1(),
-              MIDI.getData2(),
-              8);
-    };
-               if (MIDI.getData1()==sNote9)
-    {
-    MIDI.send(MIDI.getType(),
-              MIDI.getData1(),
-              MIDI.getData2(),
-              9);
-    };
-               if (MIDI.getData1()==sNote10)
-    {
-    MIDI.send(MIDI.getType(),
-              MIDI.getData1(),
-              MIDI.getData2(),
-              10);
+      fVoiceSend(vVoiceChan,vSpeedValue[vNote]); 
+      if (vVoiceChan <  vFirstVoice + 3 & MIDI.getChannel() == vPolyChan)
+        {
+            vVoiceChan++; //Go to the next voice
+        }
+        else
+        {
+            vVoiceChan = vFirstVoice; //Return to first voice channel
+        }
     };
      
- }  
- else {
-  MIDI.send(MIDI.getType(),
-             MIDI.getData1(),
-             MIDI.getData2(),
-             MIDI.getChannel());    
- }
-
-    
 }
-
-void handleNoteOff(byte channel, byte pitch, byte velocity)
-{
-    // Do something when the note is released.
-    // Note that NoteOn messages with 0 velocity are interpreted as NoteOffs.
-    digitalWrite(13,LOW);
-    
-     MIDI.send(MIDI.getType(),
-              MIDI.getData1(),
-              MIDI.getData2(),
-              MIDI.getChannel());
-    
-}
-
-// -----------------------------------------------------------------------------
     
 void setup()
 {
-     pinMode(13, OUTPUT);
+    pinMode(13, OUTPUT);
     MIDI.turnThruOff();
     
     // Connect the handleNoteOn function to the library,
     // so it is called upon reception of a NoteOn.
     MIDI.setHandleNoteOn(handleNoteOn);  // Put only the name of the function
 
-    // Do the same for NoteOffs
-    MIDI.setHandleNoteOff(handleNoteOff);
-
     // Initiate MIDI communications, listen to all channels
     MIDI.begin(MIDI_CHANNEL_OMNI);
-   
 
+    //Set the pitch envelopes to 0 (Midi cc value of 64)
+    int counter = 1;
+    while (counter <= 10)
+    {
+      MIDI.sendControlChange(43,64,vVoiceChan);
+      MIDI.sendControlChange(44,64,vVoiceChan);
+      counter++;
+    }
+
+    vVoiceChan = vFirstVoice;
 }
 
 void loop()
 {
     // Call MIDI.read the fastest you can for real-time performance.
     MIDI.read();
-    
-
 }
