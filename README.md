@@ -3,6 +3,8 @@ Makes it posible to play pitched notes on the Volca Sample using a midi keyboard
 
 Developed by Mauricio Maisterrena (December 2015, Torreon Coah. Mexico).
 
+Demo Video: https://youtu.be/WYGxZFbxsSg
+
 # Requirements:
 
 <strong>Hardware:</strong><br>
